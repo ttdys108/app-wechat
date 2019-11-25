@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+	<property name="ARC_HOME" value="/data/logs" />
+	<property name="LOG_NAME" value="wechat-service" />
+	<springProperty name="SERVER_PORT" source="server.port"/>
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>
+			<![CDATA[
+				%date{yy-MM-dd HH:mm:ss.SSS}[%level][%t][%L][%X{client_ip}]%X{user_id}-%X{user_name}-%logger{15}-%msg%n
+			]]>
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<append>true</append>
+		<file>${ARC_HOME}/${LOG_NAME}_${SERVER_PORT}.log</file>
+		<!-- Support multiple-JVM writing to the same log file -->
+		<prudent>false</prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>${ARC_HOME}/${LOG_NAME}_${SERVER_PORT}.%d{yyyyMMdd}.%i.log.zip</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>30MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>
+			<![CDATA[
+				%date{yy-MM-dd HH:mm:ss.SSS}[%level][%t][%L][%X{client_ip}]%X{user_id}-%X{user_name}-%logger{15}-%msg%n
+			]]>
+			</pattern>
+		</encoder>
+	</appender>
+	<springProfile name="default, dev">
+		<root level="INFO">
+			<appender-ref ref="stdout"/>
+		</root>
+	</springProfile>
+	<springProfile name="test, uat, prod">
+		<root level="INFO">
+			<appender-ref ref="stdout"/>
+			<appender-ref ref="FILE"/>
+		</root>
+	</springProfile>
+
+</configuration>
