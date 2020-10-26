@@ -1,0 +1,33 @@
+server:
+  port: 8090
+
+wechat:
+  app-id: wx67c97cd61a2fbb83
+  app-secret: 3f0d7d9af762bfdf848c5912aacbfa87
+  official-account-token: ttdys108
+  access-token-gateway: https://api.weixin.qq.com/cgi-bin/token
+
+redis-key:
+  access-token: _wx_access_token
+
+spring:
+  application:
+    name: wechat-service
+  redis:
+    host: 106.12.139.252
+    port: 6379
+    password: tyuiop
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://121.36.137.124:8761/eureka/
+
+---
+spring:
+  profiles: default, dev
+
+
+---
+spring:
+  profiles: test, uat, prod

@@ -1,0 +1,3 @@
+com\ttdys108\wechat\core\dto\AccessTokenResponse.class
+com\ttdys108\wechat\core\service\AccessTokenService.class
+com\ttdys108\wechat\core\dto\AccessToken.class

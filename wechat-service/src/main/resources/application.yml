@@ -14,14 +14,14 @@ spring:
   application:
     name: wechat-service
   redis:
-    host: 121.36.137.124
+    host: 106.12.139.252
     port: 6379
     password: tyuiop
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://121.36.137.124:8761/eureka/
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://121.36.137.124:8761/eureka/
 
 ---
 spring:

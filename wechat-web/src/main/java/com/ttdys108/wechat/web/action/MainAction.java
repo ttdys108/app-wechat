@@ -20,7 +20,7 @@ public class MainAction {
             AccessToken token = tokenService.getAccessToken();
             return Response.success(token);
         } catch (ServiceException e) {
-            return new Response<>(e.getCode(), e.getMsg());
+            return Response.error(e);
         }
     }
 
