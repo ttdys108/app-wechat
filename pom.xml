@@ -22,7 +22,7 @@
         <lombok.version>1.18.0</lombok.version>
         <javax.persistence.version>1.0</javax.persistence.version>
         <ttdys108.commons.version>1.0.0</ttdys108.commons.version>
-        <fastjson.version>1.2.28</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <dependencyManagement>
